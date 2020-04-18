@@ -6,8 +6,8 @@ import {HomePage, ProductPage} from '../pages'
 const App = ({shopService}) => {
   return (
     <Switch>
-      <Route path="/" component={HomePage} exact/>
-      <Route path="/product/:id?" component={ProductPage}/>
+      <Route path="/leave-me/" component={HomePage} exact/>
+      <Route path="/leave-me/product/:id?" component={ProductPage}/>
     </Switch>
   )
 }
