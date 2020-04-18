@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundary>
       <ShopServiceProvider value={shopService}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <App/>
         </Router>
       </ShopServiceProvider>
