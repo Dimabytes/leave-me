@@ -1,8 +1,8 @@
 
-const productsLoaded = (newBooks) => {
+const productsLoaded = (newProducts) => {
   return {
-    type: 'PRODUCTS_LOADED  ',
-    payload: newBooks
+    type: 'PRODUCTS_LOADED',
+    payload: newProducts
   };
 };
 
