@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@import "~bootstrap/scss/bootstrap";
+@import "fonts";
+@import "mixins";
+@import "responsive";
+@import "footer";
+@import "normalize.css";
+
+a:hover{
+  color: unset;
+  border-bottom: unset;
+  text-decoration: unset;
+}
+
+main{
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 1rem;
+}
+
+html{
+  background: #fff5f5;
+  overflow-x: hidden;
+  color: #333;
+}
+
+body{
+  font-family: "Roboto Condensed", sans-serif;
+  overflow-x: hidden;
+  @include background('bg.jpg');
+  background-attachment: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+main{
+  padding: 2rem 0;
+}
+
+img{max-width: 100%;}
+
+.btn{
+  outline: unset!important;
+  box-shadow: unset!important;
+}
+
+.form-control:focus {
+  background: inherit;
+  outline: unset;
+  box-shadow: unset;
+  border-color: unset;
+}
+
+
+
+.foo > div{
+  background: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+.btn-primary{
+  background-color: #000;
+  border-color: #000;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle{
+  background-color: #000;
+  border-color: #000;
+}
+
+.main-header{
+  font-size: 2rem;
+  font-family: "Codec Pro News", sans-serif;
+}

@@ -9,7 +9,6 @@ class ProductList extends Component{
   componentDidMount() {
     const { shopService } = this.props
     shopService.getAllProducts().then(data => {
-      console.log(12345)
       this.props.productsLoaded(data)
     })
   }
@@ -18,7 +17,6 @@ class ProductList extends Component{
     const {products, loading} = this.props
     console.log(loading)
     if(loading){
-      console.log(23456)
       return <Spinner/>
     }
     return (
