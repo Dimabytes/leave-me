@@ -12,7 +12,7 @@ const CartSidebarItem = ({product}) => {
       <div className="col-8 align-content-between d-flex justify-content-around flex-column">
         <div className="row">
           <div className="col-10">
-            <Link to='/'>{title}</Link>
+            <Link to={`/product/${id}`}>{title}</Link>
           </div>
           <div className="col-1">
             <img className="close__product" src={publicPath('/img/close.svg')} alt="close"/>
