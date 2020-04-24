@@ -1,8 +1,11 @@
-import React from "react";
-import './spinner.scss'
+import React from 'react';
+
+import './spinner.scss';
 
 const Spinner = () => {
-  return <div>Spinner</div>
-}
+  return (
+    <div className="lds-hourglass"/>
+  );
+};
 
-export default Spinner
+export default Spinner;
