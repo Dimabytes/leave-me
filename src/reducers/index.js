@@ -6,7 +6,7 @@ const initialState = {
   error: null,
   cartItems: [{
     title: "123456",
-    image: "12345",
+    image: "https://majeste.pythonanywhere.com/media/product.png",
     cost: "123456",
     id: "123456",
     count: "23456",
