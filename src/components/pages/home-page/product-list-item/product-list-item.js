@@ -15,7 +15,6 @@ class ProductListItem extends Component{
   prev() {
     this.slider.slickPrev();
   }
-  log = () => console.log(123)
   render() {
     const settings = {
       dots: false,
@@ -38,7 +37,6 @@ class ProductListItem extends Component{
               onMouseOut={this.prev}
               key={idx}
               alt=''
-              onLoad={this.log}
               src={image}/>)
           }
         </Slider>
