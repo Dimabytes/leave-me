@@ -7,7 +7,7 @@ import publicPath from "../../../utils/public-image";
 class CartSidebar extends Component {
 
   render() {
-    const {orderTotal, cartItems, visible, toggleSidebar} = this.props
+    const {orderTotal, cartItems, visible, toggleSidebar, onIncrease, onDecrease} = this.props
     const modificator = visible ? "active":"";
     return (
       <div className="sidebar-wrapper">
@@ -16,7 +16,13 @@ class CartSidebar extends Component {
             <p className="text-center text-uppercase">Корзина</p>
           </div>
           <div className="body__sidebar col-12">
-            {cartItems.map((product) => <CartSidebarItem key={product.id} product={product}/>)}
+            {
+              cartItems.map((product) => <CartSidebarItem key={product.id}
+                                                          product={product}
+                                                          onIncrease={onIncrease}
+                                                          onDecrease={ onDecrease}/>)
+            }
+
           </div>
           <div className="footer__sidebar col-12">
             <div className="row text-center">
@@ -44,5 +50,12 @@ const mapStateToProps = ({orderTotal, cartItems}) => {
   return {orderTotal, cartItems}
 }
 
+const mapDispatchToProps = () => {
+  return {
+    onIncrease: (id) => console.log(`Increase ${id}`),
+    onDecrease: (id) => console.log(`Decrease ${id}`)
+  }
+}
 
-export default connect(mapStateToProps)(CartSidebar);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartSidebar);

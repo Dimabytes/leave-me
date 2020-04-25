@@ -5,9 +5,7 @@ import withShopService from "../../../hoc";
 import {fetchProducts} from '../../../../actions'
 import Spinner from "../../../spinner";
 import ErrorIndicator from "../../../error-indicator";
-import compose from "../../../../utils/compose";
-
-
+import {compose} from "redux";
 
 
 const ProductList = ({products}) => {
@@ -23,7 +21,6 @@ const ProductList = ({products}) => {
         }
       </div>
     </div>
-
   )
 }
 
@@ -34,12 +31,13 @@ class ProductListContainer extends Component{
   }
   render() {
     const {products, loading, error} = this.props
-    if(loading){
-      return <Spinner/>
-    }
     if(error){
       return <ErrorIndicator/>
     }
+    if(loading){
+      return <Spinner/>
+    }
+
     return <ProductList products={products}/>
   }
 }

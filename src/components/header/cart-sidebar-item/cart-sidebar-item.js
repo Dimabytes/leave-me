@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import publicPath from "../../../utils/public-image";
 
-const CartSidebarItem = ({product}) => {
+const CartSidebarItem = ({product, onIncrease, onDecrease}) => {
   const  {title, image, cost, id, count} = product
   return (
     <div className="row cart__row">
@@ -21,9 +21,9 @@ const CartSidebarItem = ({product}) => {
         <div className="row">
           <div className="col-6 count__sidebar">
             <p>
-              <img alt="minus" className="control__sidebar left" src={publicPath('/img/minus.svg')}/>
+              <img alt="minus" onClick={() => onDecrease(id)} className="control__sidebar left" src={publicPath('/img/minus.svg')}/>
               <span>{count} шт</span>
-              <img alt="plus" className="control__sidebar right" src={publicPath('/img/more.svg')}/>
+              <img alt="plus" onClick={() => onIncrease(id)} className="control__sidebar right" src={publicPath('/img/more.svg')}/>
             </p>
           </div>
           <div className="col-6">

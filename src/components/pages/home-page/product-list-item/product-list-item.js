@@ -27,7 +27,6 @@ class ProductListItem extends Component{
       cssEase: 'linear'
     };
     const  {id, images} = this.props.product
-
     return (
       <Link to={`/product/${id}`} className="col-lg-4 col-6 product-card">
         <Slider ref={c => (this.slider = c)} {...settings} className="card-title">
