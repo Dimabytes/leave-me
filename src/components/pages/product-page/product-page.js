@@ -9,6 +9,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import './product-page.scss'
+import {productAddedToCart} from "../../../actions";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -32,7 +33,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ProductPage = ({product: {cost, title, images, sizes, description, structure}}) =>{
+const ProductPage = ({product: {cost, title, images, sizes, description, structure, id}, onAddedToCart}) =>{
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -72,7 +73,7 @@ const ProductPage = ({product: {cost, title, images, sizes, description, structu
                   </div>
                 </div>
                 <div className="col6">
-                  <div className="btn btn-primary btn-product">В корзину</div>
+                  <div className="btn btn-primary btn-product" onClick={onAddedToCart}>В корзину</div>
                 </div>
               </div>
               <p className="row text__product">{description}</p>
@@ -93,7 +94,7 @@ class ProductPageContainer extends Component{
   }
 
   render() {
-    const {product, loading, error} = this.props
+    const {product, loading, error, onAddedToCart} = this.props
     if(error){
       return <ErrorIndicator/>
     }
@@ -101,7 +102,7 @@ class ProductPageContainer extends Component{
       return <Spinner/>
     }
     if(product)
-      return <ProductPage product={product}/>
+      return <ProductPage product={product} onAddedToCart={onAddedToCart}/>
   }
 }
 
@@ -111,7 +112,8 @@ const mapStateToProps = ({product, loading, error}) => {
 
 const mapDispatchToProps = (dispatch, {shopService}) => {
   return{
-    fetchProduct: fetchProduct(shopService, dispatch)
+    fetchProduct: fetchProduct(shopService, dispatch),
+    onAddedToCart: () => dispatch(productAddedToCart()),
   }
 }
 

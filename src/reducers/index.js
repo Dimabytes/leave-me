@@ -3,13 +3,7 @@ const initialState = {
   loading: true,
   orderTotal: 300,
   error: null,
-  cartItems: [{
-    title: "123456",
-    image: "https://majeste.pythonanywhere.com/media/product.png",
-    cost: "123456",
-    id: "123456",
-    count: "23456",
-  }],
+  cartItems: [],
 }
 
 
@@ -57,6 +51,23 @@ const reducer = (state = initialState, action) => {
         error: action.payload,
         loading: false
       }
+    case "PRODUCT_ADDED_TO_CART":
+    const {product} = state
+      const newItem = {
+        title: product.title,
+        image: product.images[0],
+        id: product.id,
+        count: 1,
+        total:product.cost,
+      }
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems,
+          newItem
+        ]
+      }
+
     default:
       return state
   }

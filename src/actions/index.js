@@ -47,6 +47,11 @@ const productError = (err) => {
   };
 };
 
+const productAddedToCart = () => {
+  return {
+    type: "PRODUCT_ADDED_TO_CART",
+  }
+}
 
 const fetchProducts = (shopService, dispatch) => () => {
   dispatch(productsRequested());
@@ -64,5 +69,5 @@ const fetchProduct = (shopService, dispatch) => (id) => {
 
 
 export {
-  fetchProducts, fetchProduct
+  fetchProducts, fetchProduct, productAddedToCart
 };

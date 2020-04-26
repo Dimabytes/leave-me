@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import publicPath from "../../../utils/public-image";
 
 const CartSidebarItem = ({product, onIncrease, onDecrease}) => {
-  const  {title, image, cost, id, count} = product
+  const  {title, image, total, id, count} = product
   return (
     <div className="row cart__row">
       <div className="col-4">
@@ -27,7 +27,7 @@ const CartSidebarItem = ({product, onIncrease, onDecrease}) => {
             </p>
           </div>
           <div className="col-6">
-            <p className="float-right">{cost}</p>
+            <p className="float-right">{total}</p>
           </div>
         </div>
       </div>
