@@ -40,6 +40,8 @@ const productLoaded = (newProducts) => {
 
 
 
+
+
 const productError = (err) => {
   return {
     type: 'FETCH_PRODUCT_FAILURE',
@@ -47,9 +49,38 @@ const productError = (err) => {
   };
 };
 
+const productChangedSize = (productSize) => {
+  return {
+    type: "PRODUCT_CHANGED_SIZE",
+    payload: productSize
+  }
+}
+
 const productAddedToCart = () => {
   return {
     type: "PRODUCT_ADDED_TO_CART",
+  }
+}
+
+const productIncreaseInCart = (productId, productSize) => {
+  return {
+    type: "PRODUCT_INCREASE_IN_CART",
+    payload: {productId, productSize}
+  }
+}
+
+
+const productDecreaseInCart = (productId, productSize) => {
+  return {
+    type: "PRODUCT_DECREASE_IN_CART",
+    payload: {productId, productSize},
+  }
+}
+
+const allProductsRemovedFromCart = (productId, productSize) => {
+  return {
+    type: "ALL_PRODUCTS_REMOVED_FROM_CART",
+    payload: {productId, productSize},
   }
 }
 
@@ -69,5 +100,5 @@ const fetchProduct = (shopService, dispatch) => (id) => {
 
 
 export {
-  fetchProducts, fetchProduct, productAddedToCart
+  fetchProducts, fetchProduct, productAddedToCart, allProductsRemovedFromCart, productDecreaseInCart, productChangedSize, productIncreaseInCart
 };

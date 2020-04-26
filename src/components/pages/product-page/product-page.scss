@@ -46,16 +46,17 @@
 .btn-product{
   width: 9.5rem;
 }
-.images__product{
+.images__product {
   padding-top: 2rem;
-  img{
-    height: 33rem;
-    object-fit: contain;
-  }
+}
+.singe-product__slider-image{
+  height: 33rem;
+  object-fit: contain;
 }
 .nav__slider{
   position: absolute;
   width: 3rem;
+  height: 3rem;
   top: calc(50% - 1.5rem);
   cursor: pointer;
   z-index: 1;
@@ -63,8 +64,15 @@
   background: black;
   border-radius: 50%;
 }
+.nav__slider:hover{
+  background: #e67780;
+}
+
+.slider__nav-left{
+ right: 0;
+}
 .slider__nav-right{
-  right: 0;
+  left: 0;
 }
 .controls__product{
   justify-content: space-between;

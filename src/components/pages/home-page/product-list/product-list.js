@@ -1,12 +1,5 @@
-import React, {Component} from "react";
+import React from "react";
 import ProductListItem from "../product-list-item";
-import {connect} from "react-redux";
-import withShopService from "../../../hoc";
-import {fetchProducts} from '../../../../actions'
-import Spinner from "../../../spinner";
-import ErrorIndicator from "../../../error-indicator";
-import {compose} from "redux";
-
 
 const ProductList = ({products}) => {
   return (
@@ -24,34 +17,4 @@ const ProductList = ({products}) => {
   )
 }
 
-
-class ProductListContainer extends Component{
-  componentDidMount() {
-    this.props.fetchProducts()
-  }
-  render() {
-    const {products, loading, error} = this.props
-    if(error){
-      return <ErrorIndicator/>
-    }
-    if(loading){
-      return <Spinner/>
-    }
-
-    return <ProductList products={products}/>
-  }
-}
-
-
-const mapStateToProps = ({products, loading, error}) => {
-  return {products, loading, error}
-}
-
-const mapDispatchToProps = (dispatch, {shopService}) => {
-  return{
-      fetchProducts: fetchProducts(shopService, dispatch)
-  }
-}
-
-export default compose(withShopService(),connect(mapStateToProps, mapDispatchToProps
-  ))(ProductListContainer)
+export default ProductList

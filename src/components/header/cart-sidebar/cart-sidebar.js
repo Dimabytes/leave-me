@@ -4,10 +4,12 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import publicPath from "../../../utils/public-image";
 
+import {productIncreaseInCart, productDecreaseInCart, allProductsRemovedFromCart} from "../../../actions";
+
 class CartSidebar extends Component {
 
   render() {
-    const {orderTotal, cartItems, visible, toggleSidebar, onIncrease, onDecrease} = this.props
+    const {orderTotal, cartItems, visible, toggleSidebar, onIncrease, onDecrease, onDelete} = this.props
     const modificator = visible ? "active":"";
     return (
       <div className="sidebar-wrapper">
@@ -17,10 +19,11 @@ class CartSidebar extends Component {
           </div>
           <div className="body__sidebar col-12">
             {
-              cartItems.map((product) => <CartSidebarItem key={product.id}
+              cartItems.map((product, idx) => <CartSidebarItem key={idx}
                                                           product={product}
                                                           onIncrease={onIncrease}
-                                                          onDecrease={ onDecrease}/>)
+                                                          onDecrease={ onDecrease}
+                                                          onDelete={onDelete}/>)
             }
 
           </div>
@@ -46,15 +49,14 @@ class CartSidebar extends Component {
   }
 }
 
-const mapStateToProps = ({orderTotal, cartItems}) => {
+const mapStateToProps = ({shoppingCart: {orderTotal, cartItems}}) => {
   return {orderTotal, cartItems}
 }
 
-const mapDispatchToProps = () => {
-  return {
-    onIncrease: (id) => console.log(`Increase ${id}`),
-    onDecrease: (id) => console.log(`Decrease ${id}`)
-  }
+const mapDispatchToProps = {
+    onIncrease: productIncreaseInCart,
+    onDecrease: productDecreaseInCart,
+    onDelete: allProductsRemovedFromCart,
 }
 
 

@@ -17,7 +17,9 @@ export default class ShopService {
   };
 
   getProduct = async (id) => {
-    return await this.getResource(`/products/${id}/`)
+    const product = await this.getResource(`/products/${id}/`)
+    product.currentSize = product.sizes[0]
+    return product
   };
 
   addOrder = async (data) => {
