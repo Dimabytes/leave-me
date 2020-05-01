@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
 @import "fonts";
 @import "mixins";
 @import "responsive";
@@ -85,4 +88,12 @@ img{max-width: 100%;}
 }
 .simple-page-column{
   background-color: white;
+}
+
+
+@include media-breakpoint-down(sm) {
+  .btn-primary {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
 }
