@@ -10,6 +10,24 @@ class CartSidebar extends Component {
   render() {
     const {orderTotal, cartItems, visible, closeCartSidebar, onIncrease, onDecrease, onDelete} = this.props
     const modificator = visible ? "active":"";
+    if(orderTotal === 0 ) {
+      return (
+        <div className="sidebar-wrapper">
+          <div className={`sidebar cart__sidebar ${modificator}`}>
+            <div className="sidebar__header col-12">
+              <p className="text-center text-uppercase">Корзина</p>
+            </div>
+            <div className="body__sidebar col-12">
+              <p className="col-12 text-center">Корзина пуста</p>
+            </div>
+            <img className="close__sidebar justify-content-center"
+                 onClick={closeCartSidebar}
+                 src={publicPath('/img/next.svg')}
+                 alt="close"/>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="sidebar-wrapper">
         <div className={`sidebar cart__sidebar ${modificator}`}>

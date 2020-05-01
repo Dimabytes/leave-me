@@ -6,6 +6,7 @@ import {compose} from "redux";
 import withShopService from "../../../hoc";
 import {connect} from "react-redux";
 import SingleProduct from "./single-product";
+import NoMatch from "../../../no-match";
 
 class SingleProductContainer extends Component{
   componentWillMount() {
@@ -14,12 +15,14 @@ class SingleProductContainer extends Component{
 
   render() {
     const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize} = this.props
+
     if(error){
+      if(error.message.indexOf('404') !== -1)
+        return <NoMatch/>
       return <ErrorIndicator/>
     }
-    if(loading || !product){
+    if(loading || !product)
       return <Spinner/>
-    }
     if(product)
       return <SingleProduct product={product}
                             onAddedToCart={onAddedToCart}

@@ -7,7 +7,7 @@ const FieldError = ({error}) => {
   return <div className="invalid-feedback d-block">{error}</div>
 }
 
-const CheckoutForm = () => {
+const CheckoutForm = ({onSubmit}) => {
   return (
     <Formik
       initialValues={{ name: '', surname: '', address: '', phone: "", zip: "", email: "" }}
@@ -26,12 +26,7 @@ const CheckoutForm = () => {
           .email(<FieldError error="Некорректный E-mail"/>)
           .required(<FieldError error="Обязательно"/>),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={(values) => onSubmit(values)}
     >
       <Form className="checkout-form rounded-lg p-3 needs-validation">
         <h1 className="mb-3 main-header">Доставка</h1>
@@ -79,5 +74,6 @@ const CheckoutForm = () => {
     </Formik>
   );
 };
+
 
 export default CheckoutForm

@@ -2,9 +2,8 @@ export default class ShopService {
 
   _apiBase = 'https://majeste.pythonanywhere.com/api/v1';
 
-  getResource = async (url) => {
-    const res = await fetch(`${this._apiBase}${url}`);
-
+  getResource = async (url, opts) => {
+    const res = await fetch(`${this._apiBase}${url}`, opts);
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}` +
         `, received ${res.status}`)
@@ -22,11 +21,14 @@ export default class ShopService {
     return product
   };
 
-  addOrder = async (data) => {
-    return await this.getResource(`/orders/`, {
+  addOrder = async (body) => {
+    return await this.getResource("/orders/", {
+      "headers": {
+        "accept": "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(body),
       method: "POST",
-      data
-    })
-  }
+    });
 
-}
+}}

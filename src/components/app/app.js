@@ -1,30 +1,54 @@
-import React, {Fragment} from "react";
+import React, {Component, Fragment} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss'
-import {Route, Switch} from 'react-router'
+import {Route, Switch, withRouter} from 'react-router-dom'
+import {compose} from "redux";
 import {CheckoutPage, HomePage, ProductPage} from '../pages'
 import Footer from "../footer";
 import Header from "../header";
 import './style/base.scss'
-import noMatch from "../no-match";
+import NoMatch from "../no-match";
+import SuccessOrder from "../pages/success_order";
+import FailOrder from "../pages/fail_order";
+import {connect} from "react-redux";
+import {closeCartSidebar} from "../../actions";
 
-const App = () => {
-  return (
-    <Fragment>
-      <Header/>
-      <Switch>
-        <Route path="/" component={HomePage} exact/>
-        <Route path="/checkout" component={CheckoutPage} exact/>
-      <Route path="/product/:id?" render={({match}) => {
-        const {id} = match.params;
-        return <ProductPage itemId={id}/>
-      }}/>
-        <Route component={noMatch} />
-      </Switch>
-      <Footer/>
-    </Fragment>
+class App extends Component {
 
-  )
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.props.closeCartSidebar()
+    }
+  }
+  render() {
+
+
+    return (
+      <Fragment>
+        <Header/>
+        <Switch>
+          <Route path="/" component={HomePage} exact/>
+          <Route path="/checkout" component={CheckoutPage} exact/>
+          <Route path="/success_order" component={SuccessOrder} exact/>
+          <Route path="/fail_order" component={FailOrder} exact/>
+          <Route path="/product/:id?" render={({match}) => {
+            const {id} = match.params;
+            return <ProductPage itemId={id}/>
+          }}/>
+          <Route component={NoMatch}/>
+        </Switch>
+        <Footer/>
+      </Fragment>
+
+    )
+  }
 }
 
-export default App
+
+
+const mapDispatchToProps = {
+  closeCartSidebar
+}
+
+
+export default compose(withRouter, connect(null, mapDispatchToProps))(App)

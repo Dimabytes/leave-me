@@ -26,6 +26,12 @@ const allProductsRemovedFromCart = (productId, productSize) => {
   }
 }
 
+const clearCart = () => {
+  return {
+    type: "CLEAR_CART",
+  }
+}
+
 const closeCartSidebar = () => {
   return {
     type: "CLOSE_CART_SIDEBAR",
@@ -41,5 +47,5 @@ const openCartSidebar = () => {
 
 
 
-export {productAddedToCart, productDecreaseInCart,
+export {productAddedToCart, productDecreaseInCart, clearCart,
   productIncreaseInCart, allProductsRemovedFromCart, openCartSidebar, closeCartSidebar}

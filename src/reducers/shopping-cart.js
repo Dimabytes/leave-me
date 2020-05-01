@@ -97,6 +97,12 @@ const updateShoppingCart = (state, action) => {
         ...state.shoppingCart,
         cartOpen: true,
       }
+    case "CLEAR_CART":
+      return {
+        ...state.shoppingCart,
+        cartItems: [],
+        orderTotal: 0,
+      }
     default:
       return state.shoppingCart
   }
