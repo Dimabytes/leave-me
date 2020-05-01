@@ -7,9 +7,7 @@ const ProductList = ({products}) => {
       <div className="row align-items-center justify-content-center">
         {
           products.map((product) => {
-            return (
-              <ProductListItem key={product.id} product={product}/>
-            )
+            return <ProductListItem key={product.id} product={product}/>
           })
         }
       </div>

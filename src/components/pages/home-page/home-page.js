@@ -1,5 +1,6 @@
 import React from "react";
 import ProductList from './product-list'
+import './home-page.scss'
 
 const HomePage =  () => {
   return (
