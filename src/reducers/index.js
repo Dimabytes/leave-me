@@ -1,11 +1,11 @@
 import updateProductList from "./product-list";
-import updateProductPage from "./product-page";
+import updateSingleProduct from "./single-product";
 import updateShoppingCart from "./shopping-cart";
 
 const reducer = (state, action) => {
   return{
     productList: updateProductList(state, action),
-    productPage: updateProductPage(state, action),
+    productPage: updateSingleProduct(state, action),
     shoppingCart: updateShoppingCart(state, action),
   }
 }

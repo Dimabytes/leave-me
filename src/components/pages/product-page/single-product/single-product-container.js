@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ErrorIndicator from "../../../error-indicator";
 import Spinner from "../../../spinner";
-import {fetchProduct, productAddedToCart, productChangedSize} from "../../../../actions";
+import {fetchProduct, openCartSidebar, productAddedToCart, productChangedSize} from "../../../../actions";
 import {compose} from "redux";
 import withShopService from "../../../hoc";
 import {connect} from "react-redux";
@@ -21,7 +21,10 @@ class SingleProductContainer extends Component{
       return <Spinner/>
     }
     if(product)
-      return <SingleProduct product={product} onAddedToCart={onAddedToCart} onRemovedToFromCart={onRemovedToFromCart} onChangeSize={onChangeSize}/>
+      return <SingleProduct product={product}
+                            onAddedToCart={onAddedToCart}
+                            onRemovedToFromCart={onRemovedToFromCart}
+                            onChangeSize={onChangeSize}/>
   }
 }
 
@@ -32,8 +35,11 @@ const mapStateToProps = ({productPage:{product, loading, error}}) => {
 const mapDispatchToProps = (dispatch, {shopService}) => {
   return{
     fetchProduct: fetchProduct(shopService, dispatch),
-    onAddedToCart: () => dispatch(productAddedToCart()),
-    onChangeSize: (productSize) => dispatch(productChangedSize(productSize))
+    onAddedToCart: () => {
+      dispatch(productAddedToCart())
+      dispatch(openCartSidebar())
+    },
+    onChangeSize: (productSize) => dispatch(productChangedSize(productSize)),
   }
 }
 

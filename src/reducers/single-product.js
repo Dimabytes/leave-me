@@ -1,4 +1,4 @@
-const updateProductPage = (state, action) => {
+const updateSingleProduct = (state, action) => {
   if(state === undefined){
     return {
       loading: true,
@@ -38,4 +38,4 @@ const updateProductPage = (state, action) => {
   }
 }
 
-export default updateProductPage
+export default updateSingleProduct

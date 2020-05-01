@@ -47,6 +47,7 @@ const updateOrder = (state, productId, productSize, quantity) => {
   const newItem = updateCartItem(product, item, quantity)
   const newItems = updateCartItems(cartItems, newItem, itemIndex)
   return {
+    ...state.shoppingCart,
     orderTotal: newItems.reduce((a, b) => a + (b['total'] || 0), 0),
     cartItems: newItems
   }
@@ -60,6 +61,7 @@ const addFromPage = (state) => {
   const newItem = updateCartItem(product, item, 1)
   const newItems = updateCartItems(cartItems, newItem, itemIndex)
   return {
+    ...state.shoppingCart,
     orderTotal: newItems.reduce((a, b) => a + (b['total'] || 0), 0),
     cartItems: newItems
   }
@@ -72,6 +74,7 @@ const updateShoppingCart = (state, action) => {
     return {
       cartItems: [],
       orderTotal: 0,
+      cartOpen: false,
     }
   }
   switch (action.type) {
@@ -84,6 +87,16 @@ const updateShoppingCart = (state, action) => {
     case "ALL_PRODUCTS_REMOVED_FROM_CART":
       const item = state.shoppingCart.cartItems.find(({id, size}) => id === action.payload.productId && size === action.payload.productSize)
       return updateOrder(state, action.payload.productId, action.payload.productSize, -item.count)
+    case "CLOSE_CART_SIDEBAR":
+        return {
+          ...state.shoppingCart,
+          cartOpen: false,
+        }
+    case "OPEN_CART_SIDEBAR":
+      return {
+        ...state.shoppingCart,
+        cartOpen: true,
+      }
     default:
       return state.shoppingCart
   }

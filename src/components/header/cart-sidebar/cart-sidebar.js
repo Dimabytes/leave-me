@@ -3,13 +3,12 @@ import CartSidebarItem from "../cart-sidebar-item";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import publicPath from "../../../utils/public-image";
-
-import {productIncreaseInCart, productDecreaseInCart, allProductsRemovedFromCart} from "../../../actions";
+import {productIncreaseInCart, productDecreaseInCart, allProductsRemovedFromCart, closeCartSidebar} from "../../../actions";
 
 class CartSidebar extends Component {
 
   render() {
-    const {orderTotal, cartItems, visible, toggleSidebar, onIncrease, onDecrease, onDelete} = this.props
+    const {orderTotal, cartItems, visible, closeCartSidebar, onIncrease, onDecrease, onDelete} = this.props
     const modificator = visible ? "active":"";
     return (
       <div className="sidebar-wrapper">
@@ -33,14 +32,15 @@ class CartSidebar extends Component {
                 <p className="text">Итого: {orderTotal}р</p>
               </div>
             </div>
+            <div className="mb-3"/>
             <div className="row text-center">
               <div className="col-12">
-                <Link to="/" className="btn btn-primary">Оформить заказ</Link>
+                <Link to="/checkout" className="btn btn-primary">Оформить заказ</Link>
               </div>
             </div>
           </div>
           <img className="close__sidebar justify-content-center"
-               onClick={toggleSidebar}
+               onClick={closeCartSidebar}
                src={publicPath('/img/next.svg')}
                alt="close"/>
         </div>
@@ -49,14 +49,15 @@ class CartSidebar extends Component {
   }
 }
 
-const mapStateToProps = ({shoppingCart: {orderTotal, cartItems}}) => {
-  return {orderTotal, cartItems}
+const mapStateToProps = ({shoppingCart: {orderTotal, cartItems, cartOpen: visible}}) => {
+  return {orderTotal, cartItems, visible}
 }
 
 const mapDispatchToProps = {
     onIncrease: productIncreaseInCart,
     onDecrease: productDecreaseInCart,
     onDelete: allProductsRemovedFromCart,
+    closeCartSidebar
 }
 
 

@@ -1,19 +1,11 @@
-import React, {Fragment, Component} from 'react';
+import React, {Fragment} from 'react';
 import CartSidebar from "./cart-sidebar";
 import './header.scss';
 import {Link} from "react-router-dom";
 import publicPath from "../../utils/public-image";
-class Header extends Component{
-
-  state = {
-    sidebarVisible: false
-  };
-
-  toggleSidebar = () => {
-    this.setState({sidebarVisible: !this.state.sidebarVisible})
-  }
-
-  render (){
+import {connect} from "react-redux";
+import {openCartSidebar} from "../../actions";
+const Header = ({openCartSidebar}) => {
     return (
       <Fragment>
         <nav className="main-nav row align-items-center flex-nowrap">
@@ -22,17 +14,19 @@ class Header extends Component{
           </div>
           <div className="col-4">
             <img className="main-nav__cart-icon toggle-bag float-right"
-                 onClick={this.toggleSidebar}
+                 onClick={openCartSidebar}
                  src={publicPath('/img/bag.svg')}
                  alt="bag"/>
           </div>
         </nav>
-        <CartSidebar toggleSidebar={this.toggleSidebar} visible={this.state.sidebarVisible}/>
+        <CartSidebar/>
       </Fragment>
     )
-  }
+}
+
+const mapDispatchToProps = {
+  openCartSidebar
+}
 
 
-};
-
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);

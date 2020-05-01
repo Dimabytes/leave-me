@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss'
 import {Route, Switch} from 'react-router'
-import {HomePage, ProductPage} from '../pages'
+import {CheckoutPage, HomePage, ProductPage} from '../pages'
 import Footer from "../footer";
 import Header from "../header";
 import './style/base.scss'
@@ -13,7 +13,8 @@ const App = () => {
     <Fragment>
       <Header/>
       <Switch>
-      <Route path="/" component={HomePage} exact/>
+        <Route path="/" component={HomePage} exact/>
+        <Route path="/checkout" component={CheckoutPage} exact/>
       <Route path="/product/:id?" render={({match}) => {
         const {id} = match.params;
         return <ProductPage itemId={id}/>

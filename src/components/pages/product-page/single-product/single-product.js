@@ -1,10 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
-import {Link} from "react-router-dom";
 import '../../../app/style/slick.css'
 import {ReactComponent as NextSvg} from './img/next.svg'
 import {ReactComponent as PrevSvg} from './img/prev.svg'
-
+import './single-product.scss'
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -20,7 +19,8 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SingleProduct =  ({product: {cost, title, images, sizes, description, structure}, onAddedToCart, onChangeSize}) => {
+const SingleProduct =  ({product: {cost, title, images, sizes, description, structure, sizes_image},
+                          onAddedToCart, onChangeSize}) => {
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -59,13 +59,15 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
           </div>
         </div>
         <div className="col6">
-          <div className="btn btn-primary btn-product" onClick={() => onAddedToCart()}>В корзину</div>
+          <div className="btn btn-primary btn-product" onClick={() => {
+            onAddedToCart();
+          }}>В корзину</div>
         </div>
       </div>
       <p className="row text__product">{description}</p>
       <p className="row text__product">{structure}</p>
       <div className="row">
-        <Link className="link__product" to="#">Таблица размеров</Link>
+        <a className="link__product" href={sizes_image}>Таблица размеров</a>
       </div>
     </div>
   </div>)
