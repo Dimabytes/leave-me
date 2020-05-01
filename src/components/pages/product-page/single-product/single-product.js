@@ -66,6 +66,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
       </div>
       <p className="row text__product">{description}</p>
       <p className="row text__product">{structure}</p>
+      <div className="mb-3"/>
       <div className="row">
         <a className="link__product" href={sizes_image}>Таблица размеров</a>
       </div>
