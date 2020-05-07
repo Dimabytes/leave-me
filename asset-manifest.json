@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/leave-me/static/css/main.db7b52e0.chunk.css",
-    "main.js": "/leave-me/static/js/main.3af605e6.chunk.js",
-    "main.js.map": "/leave-me/static/js/main.3af605e6.chunk.js.map",
+    "main.css": "/leave-me/static/css/main.be2c9b67.chunk.css",
+    "main.js": "/leave-me/static/js/main.92a20c5f.chunk.js",
+    "main.js.map": "/leave-me/static/js/main.92a20c5f.chunk.js.map",
     "runtime-main.js": "/leave-me/static/js/runtime-main.924fcf86.js",
     "runtime-main.js.map": "/leave-me/static/js/runtime-main.924fcf86.js.map",
     "static/css/2.69121389.chunk.css": "/leave-me/static/css/2.69121389.chunk.css",
-    "static/js/2.98f19234.chunk.js": "/leave-me/static/js/2.98f19234.chunk.js",
-    "static/js/2.98f19234.chunk.js.map": "/leave-me/static/js/2.98f19234.chunk.js.map",
+    "static/js/2.b84731a1.chunk.js": "/leave-me/static/js/2.b84731a1.chunk.js",
+    "static/js/2.b84731a1.chunk.js.map": "/leave-me/static/js/2.b84731a1.chunk.js.map",
     "index.html": "/leave-me/index.html",
-    "precache-manifest.7601d4b6b108d037f7dab367e65f543b.js": "/leave-me/precache-manifest.7601d4b6b108d037f7dab367e65f543b.js",
+    "precache-manifest.706628f3f0e73ea9243b54bf64d0bd40.js": "/leave-me/precache-manifest.706628f3f0e73ea9243b54bf64d0bd40.js",
     "service-worker.js": "/leave-me/service-worker.js",
     "static/css/2.69121389.chunk.css.map": "/leave-me/static/css/2.69121389.chunk.css.map",
-    "static/css/main.db7b52e0.chunk.css.map": "/leave-me/static/css/main.db7b52e0.chunk.css.map",
-    "static/js/2.98f19234.chunk.js.LICENSE.txt": "/leave-me/static/js/2.98f19234.chunk.js.LICENSE.txt",
-    "static/media/base.scss": "/leave-me/static/media/bg.d3c6b3f4.jpg",
+    "static/css/main.be2c9b67.chunk.css.map": "/leave-me/static/css/main.be2c9b67.chunk.css.map",
+    "static/js/2.b84731a1.chunk.js.LICENSE.txt": "/leave-me/static/js/2.b84731a1.chunk.js.LICENSE.txt",
+    "static/media/app.scss": "/leave-me/static/media/bg.d3c6b3f4.jpg",
     "static/media/next.0a06d5c5.svg": "/leave-me/static/media/next.0a06d5c5.svg",
     "static/media/prev.f668368d.svg": "/leave-me/static/media/prev.f668368d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.924fcf86.js",
     "static/css/2.69121389.chunk.css",
-    "static/js/2.98f19234.chunk.js",
-    "static/css/main.db7b52e0.chunk.css",
-    "static/js/main.3af605e6.chunk.js"
+    "static/js/2.b84731a1.chunk.js",
+    "static/css/main.be2c9b67.chunk.css",
+    "static/js/main.92a20c5f.chunk.js"
   ]
 }
