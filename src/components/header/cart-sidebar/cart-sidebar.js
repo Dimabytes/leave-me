@@ -4,10 +4,9 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import publicPath from "../../../utils/public-image";
 import {
-  productIncreaseInCart,
   productDecreaseInCart,
   allProductsRemovedFromCart,
-  closeCartSidebar,
+  closeCartSidebar, checkAddToCart
 } from "../../../actions";
 import {bindActionCreators, compose} from "redux";
 import withShopService from "../../hoc";
@@ -82,22 +81,13 @@ const mapStateToProps = ({shoppingCart: {orderTotal, cartItems, cartOpen: visibl
 
 
 const mapDispatchToProps = (dispatch, {shopService}) => {
-  return{
-    ...bindActionCreators({
+  return bindActionCreators({
       onDecrease: productDecreaseInCart,
-      onDelete: allProductsRemovedFromCart, closeCartSidebar }, dispatch),
-    onIncrease: (id, size, cartItems) => {
-      const productInCart = cartItems.find(e => e.id === id)
-      const quantity = productInCart ? productInCart.count : 1;
-      shopService.checkProductQuantity(id, quantity, size)
-        .then(res => {
-          if(res.allow){
-            dispatch(productIncreaseInCart(id, size))
-          }
-        })
+      onDelete: allProductsRemovedFromCart,
+      onIncrease: checkAddToCart(shopService),
+      closeCartSidebar,
+      }, dispatch)
 
-    },
-  }
 }
 
 

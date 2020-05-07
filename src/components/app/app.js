@@ -6,10 +6,9 @@ import {compose} from "redux";
 import {CheckoutPage, HomePage, ProductPage} from '../pages'
 import Footer from "../footer";
 import Header from "../header";
-import './style/base.scss'
-import NoMatch from "../no-match";
-import SuccessOrder from "../pages/success_order";
-import FailOrder from "../pages/fail_order";
+import NoMatch from "../pages/no-match";
+import SuccessOrder from "../pages/success-order";
+import FailOrder from "../pages/fail-order";
 import {connect} from "react-redux";
 import {closeCartSidebar} from "../../actions";
 
@@ -30,7 +29,7 @@ class App extends Component {
           <Route path="/" component={HomePage} exact/>
           <Route path="/checkout" component={CheckoutPage} exact/>
           <Route path="/success_order" component={SuccessOrder} exact/>
-          <Route path="/fail_order" component={FailOrder} exact/>
+          <Route path="/fail-order" component={FailOrder} exact/>
           <Route path="/product/:id?" render={({match}) => {
             const {id} = match.params;
             return <ProductPage itemId={id}/>

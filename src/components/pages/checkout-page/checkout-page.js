@@ -30,14 +30,19 @@ class CheckoutPage extends Component {
           })
 
       })
-        .then(() => {
-          clearCart()
-          this.setState({formProcessing: false})
-          this.props.history.push("/success_order");
+        .then((res) => {
+          if(res.status){
+            clearCart()
+            this.setState({formProcessing: false})
+            this.props.history.push("/success_order");
+          } else {
+            this.setState({formProcessing: false})
+            this.props.history.push("/fail-order");
+          }
         })
         .catch(() => {
           this.setState({formProcessing: false})
-          this.props.history.push("/fail_order");
+          this.props.history.push("/fail-order");
         })
     }
     if (orderTotal === 0)

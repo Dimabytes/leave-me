@@ -1,12 +1,17 @@
 import React, {Component} from "react";
 import ErrorIndicator from "../../../error-indicator";
 import Spinner from "../../../spinner";
-import {fetchProduct, openCartSidebar, productAddedToCart, productChangedSize} from "../../../../actions";
-import {compose} from "redux";
+import {
+  fetchProduct,
+  productChangedSize,
+  checkSingleProduct
+} from "../../../../actions";
+import {bindActionCreators, compose} from "redux";
 import withShopService from "../../../hoc";
 import {connect} from "react-redux";
 import SingleProduct from "./single-product";
-import NoMatch from "../../../no-match";
+import NoMatch from "../../no-match";
+import SimplePage from "../../simple-page";
 
 class SingleProductContainer extends Component{
   componentWillMount() {
@@ -15,14 +20,23 @@ class SingleProductContainer extends Component{
 
   render() {
     const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize, cartItems} = this.props
-
+    console.log(error)
     if(error){
-      if(error.message.indexOf('404') !== -1)
-        return <NoMatch/>
+      if(error.message){
+        if(error.message.indexOf('404') !== -1)
+          return <NoMatch/>
+      }
       return <ErrorIndicator/>
     }
     if(loading || !product)
       return <Spinner/>
+    if (product.empty){
+      return (
+        <SimplePage pageClass="out-of-stock" containerClasses="text-center">
+          OUT OF STOCK!!!
+        </SimplePage>
+      )
+    }
     if(product)
       return <SingleProduct product={product}
                             cartItems={cartItems}
@@ -37,22 +51,11 @@ const mapStateToProps = ({productPage:{product, loading, error}, shoppingCart: {
 }
 
 const mapDispatchToProps = (dispatch, {shopService}) => {
-  return{
-    fetchProduct: fetchProduct(shopService, dispatch),
-    onAddedToCart: (cartItems, product) => {
-      const productInCart = cartItems.find(e => e.id === product.id)
-      const quantity = productInCart ? productInCart.count : 1;
-      shopService.checkProductQuantity(product.id, quantity, product.currentSize)
-        .then(res => {
-          if(res.allow){
-            dispatch(productAddedToCart())
-            dispatch(openCartSidebar())
-          }
-        })
-
-    },
-    onChangeSize: (productSize) => dispatch(productChangedSize(productSize)),
-  }
+  return bindActionCreators({
+    fetchProduct: fetchProduct(shopService),
+    onAddedToCart: checkSingleProduct(shopService),
+    onChangeSize: productChangedSize
+  }, dispatch);
 }
 
 export default compose(

@@ -43,10 +43,15 @@ const openCartSidebar = () => {
   }
 }
 
-
-
-
-
-
+const checkAddToCart = (shopService) => (id, size, cartItems) => (dispatch) => {
+  const productInCart = cartItems.find(e => e.id === id)
+  const quantity = productInCart ? productInCart.count : 1;
+  shopService.checkProductQuantity(id, quantity, size)
+    .then(res => {
+      if(res.allow){
+        dispatch(productIncreaseInCart(id, size))
+      }
+    })
+}
 export {productAddedToCart, productDecreaseInCart, clearCart,
-  productIncreaseInCart, allProductsRemovedFromCart, openCartSidebar, closeCartSidebar}
+  productIncreaseInCart, allProductsRemovedFromCart, openCartSidebar, closeCartSidebar, checkAddToCart}

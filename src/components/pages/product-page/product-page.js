@@ -1,6 +1,5 @@
 import React from "react";
 import SingleProduct from "./single-product";
-import './product-page.scss'
 
 const ProductPage = ({itemId}) => {
     return (

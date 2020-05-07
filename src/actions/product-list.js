@@ -21,11 +21,13 @@ const productsError = (err) => {
   };
 };
 
-const fetchProducts = (shopService, dispatch) => () => {
-  dispatch(productsRequested());
+
+
+const fetchProducts = (shopService) => () => (dispatch) => {
+  dispatch(productsRequested())
   shopService.getAllProducts()
-    .then(data => dispatch(productsLoaded(data)))
-    .catch(err => dispatch(productsError(err)))
-}
+    .then((data) => dispatch(productsLoaded(data)))
+    .catch((err) => dispatch(productsError(err)));
+};
 
 export default fetchProducts

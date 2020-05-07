@@ -53,7 +53,7 @@ const SingleProduct =  ({product, product: {cost, title, images, sizes, descript
           <div className="form-group">
             <select onChange={(event) => onChangeSize(event.target.value)} className="form-control select__product">
               {
-                sizes.map((size, idx) => <option key={idx}>{size}</option>)
+                sizes.sort().map((size, idx) => <option key={idx}>{size}</option>)
               }
             </select>
           </div>

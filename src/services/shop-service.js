@@ -16,9 +16,7 @@ export default class ShopService {
   };
 
   getProduct = async (id) => {
-    const product = await this.getResource(`/products/${id}/`)
-    product.currentSize = product.sizes[0]
-    return product
+    return await this.getResource(`/products/${id}/`)
   };
 
   addOrder = async (body) => {
@@ -33,7 +31,6 @@ export default class ShopService {
 }
 
   checkProductQuantity = async (id, quantity, size) => {
-    console.log(size)
     return await this.getResource("/products/check_quantity/", {
       "headers": {
         "accept": "application/json",
