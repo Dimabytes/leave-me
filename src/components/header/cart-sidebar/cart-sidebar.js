@@ -3,7 +3,14 @@ import CartSidebarItem from "../cart-sidebar-item";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import publicPath from "../../../utils/public-image";
-import {productIncreaseInCart, productDecreaseInCart, allProductsRemovedFromCart, closeCartSidebar} from "../../../actions";
+import {
+  productIncreaseInCart,
+  productDecreaseInCart,
+  allProductsRemovedFromCart,
+  closeCartSidebar,
+} from "../../../actions";
+import {bindActionCreators, compose} from "redux";
+import withShopService from "../../hoc";
 
 class CartSidebar extends Component {
 
@@ -40,7 +47,8 @@ class CartSidebar extends Component {
                                                           product={product}
                                                           onIncrease={onIncrease}
                                                           onDecrease={ onDecrease}
-                                                          onDelete={onDelete}/>)
+                                                          onDelete={onDelete}
+                                                               cartItems={cartItems}/>)
             }
 
           </div>
@@ -71,12 +79,28 @@ const mapStateToProps = ({shoppingCart: {orderTotal, cartItems, cartOpen: visibl
   return {orderTotal, cartItems, visible}
 }
 
-const mapDispatchToProps = {
-    onIncrease: productIncreaseInCart,
-    onDecrease: productDecreaseInCart,
-    onDelete: allProductsRemovedFromCart,
-    closeCartSidebar
+
+
+const mapDispatchToProps = (dispatch, {shopService}) => {
+  return{
+    ...bindActionCreators({
+      onDecrease: productDecreaseInCart,
+      onDelete: allProductsRemovedFromCart, closeCartSidebar }, dispatch),
+    onIncrease: (id, size, cartItems) => {
+      const productInCart = cartItems.find(e => e.id === id)
+      const quantity = productInCart ? productInCart.count : 1;
+      shopService.checkProductQuantity(id, quantity, size)
+        .then(res => {
+          if(res.allow){
+            dispatch(productIncreaseInCart(id, size))
+          }
+        })
+
+    },
+  }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartSidebar);
+export default compose(
+  withShopService(),
+  connect(mapStateToProps, mapDispatchToProps))(CartSidebar)

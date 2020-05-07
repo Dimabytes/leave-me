@@ -11,7 +11,6 @@ const productIncreaseInCart = (productId, productSize) => {
   }
 }
 
-
 const productDecreaseInCart = (productId, productSize) => {
   return {
     type: "PRODUCT_DECREASE_IN_CART",
@@ -43,6 +42,8 @@ const openCartSidebar = () => {
     type: "OPEN_CART_SIDEBAR",
   }
 }
+
+
 
 
 

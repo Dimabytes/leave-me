@@ -19,8 +19,8 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SingleProduct =  ({product: {cost, title, images, sizes, description, structure, sizes_image},
-                          onAddedToCart, onChangeSize}) => {
+const SingleProduct =  ({product, product: {cost, title, images, sizes, description, structure, sizes_image},
+                          onAddedToCart, onChangeSize, cartItems}) => {
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -60,7 +60,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
         </div>
         <div className="col6">
           <div className="btn btn-primary btn-product" onClick={() => {
-            onAddedToCart();
+            onAddedToCart(cartItems, product);
           }}>В корзину</div>
         </div>
       </div>

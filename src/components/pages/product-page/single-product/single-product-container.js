@@ -14,7 +14,7 @@ class SingleProductContainer extends Component{
   }
 
   render() {
-    const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize} = this.props
+    const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize, cartItems} = this.props
 
     if(error){
       if(error.message.indexOf('404') !== -1)
@@ -25,22 +25,31 @@ class SingleProductContainer extends Component{
       return <Spinner/>
     if(product)
       return <SingleProduct product={product}
+                            cartItems={cartItems}
                             onAddedToCart={onAddedToCart}
                             onRemovedToFromCart={onRemovedToFromCart}
                             onChangeSize={onChangeSize}/>
   }
 }
 
-const mapStateToProps = ({productPage:{product, loading, error}}) => {
-  return {product, loading, error}
+const mapStateToProps = ({productPage:{product, loading, error}, shoppingCart: {cartItems}}) => {
+  return {product, loading, error, cartItems}
 }
 
 const mapDispatchToProps = (dispatch, {shopService}) => {
   return{
     fetchProduct: fetchProduct(shopService, dispatch),
-    onAddedToCart: () => {
-      dispatch(productAddedToCart())
-      dispatch(openCartSidebar())
+    onAddedToCart: (cartItems, product) => {
+      const productInCart = cartItems.find(e => e.id === product.id)
+      const quantity = productInCart ? productInCart.count : 1;
+      shopService.checkProductQuantity(product.id, quantity, product.currentSize)
+        .then(res => {
+          if(res.allow){
+            dispatch(productAddedToCart())
+            dispatch(openCartSidebar())
+          }
+        })
+
     },
     onChangeSize: (productSize) => dispatch(productChangedSize(productSize)),
   }
