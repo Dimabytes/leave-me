@@ -20,7 +20,6 @@ class SingleProductContainer extends Component{
 
   render() {
     const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize, cartItems} = this.props
-    console.log(error)
     if(error){
       if(error.message){
         if(error.message.indexOf('404') !== -1)

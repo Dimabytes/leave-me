@@ -36,6 +36,13 @@
   border: black 2px solid;
   cursor: pointer;
 }
+
+.select__product:focus{
+  color: black;
+  font-weight: 800;
+  border: black 2px solid;
+}
+
 .text__product{
   font-family: "Roboto", sans-serif;
   font-weight: 500;
