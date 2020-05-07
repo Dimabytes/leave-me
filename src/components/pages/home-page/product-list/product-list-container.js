@@ -13,7 +13,6 @@ class ProductListContainer extends Component{
   }
   render() {
     const {products, loading, error} = this.props
-    console.log(loading)
     if(error)
       return <ErrorIndicator/>
     if(loading)
@@ -23,7 +22,6 @@ class ProductListContainer extends Component{
 }
 
 const mapStateToProps = ({productList: {products, loading, error}}) => {
-  console.log(loading)
   return {products, loading, error}
 }
 
