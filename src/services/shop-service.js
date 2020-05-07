@@ -1,6 +1,6 @@
 export default class ShopService {
 
-  _apiBase = 'http://127.0.0.1:8000/api/v1';
+  _apiBase = 'http://majeste.pythonanywhere.com//api/v1';
 
   getResource = async (url, opts) => {
     const res = await fetch(`${this._apiBase}${url}`, opts);
