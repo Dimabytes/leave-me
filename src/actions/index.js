@@ -1,12 +1,12 @@
 import fetchProducts from "./product-list";
-import {productAddedToCart, allProductsRemovedFromCart, clearCart,
+import {allProductsRemovedFromCart, clearCart,
   productIncreaseInCart, productDecreaseInCart,
   openCartSidebar, closeCartSidebar, checkAddToCart} from "./shopping-cart";
-import {fetchProduct, productChangedSize, checkSingleProduct} from "./single-product";
+import {fetchProduct, productChangedSize} from "./single-product";
 
 export {
   fetchProducts,
-  productAddedToCart, allProductsRemovedFromCart, productIncreaseInCart, productDecreaseInCart,clearCart,
+  allProductsRemovedFromCart, productIncreaseInCart, productDecreaseInCart,clearCart,
   openCartSidebar, closeCartSidebar,checkAddToCart,
-  fetchProduct, productChangedSize, checkSingleProduct
+  fetchProduct, productChangedSize
 }

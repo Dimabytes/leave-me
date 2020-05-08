@@ -27,7 +27,6 @@ class ProductListItem extends Component{
       cssEase: 'linear'
     };
     const  {product, product: {id, images}} = this.props
-    console.log(product)
     if(product.sizes.length > 0){
       return (
         <Link to={`/product/${id}`} className="col-lg-4 col-6 product-card">

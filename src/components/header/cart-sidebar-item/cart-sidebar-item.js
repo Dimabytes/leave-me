@@ -2,8 +2,28 @@ import React from "react";
 import {Link} from "react-router-dom";
 import publicPath from "../../../utils/public-image";
 
-const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems}) => {
+const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems, checkRequested}) => {
   const  {title, image, total, id, count, size} = product
+  const IncreaseBtn = (
+    <img alt="plus"
+         className="control__sidebar right"
+         src={publicPath('/img/more.svg')}
+         onClick={() => {
+           if(!checkRequested)
+             onIncrease(id, size, cartItems)
+         }} />
+         )
+
+  const DecreaseBtn = (
+    <img alt="minus"
+         className="control__sidebar left"
+         src={publicPath('/img/minus.svg')}
+         onClick={() => {
+           if(!checkRequested)
+            onDecrease(id, size)
+         }}
+    />
+  )
   return (
     <div className="row cart__row">
       <div className="col-4">
@@ -18,13 +38,15 @@ const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems})
             <img className="close__product" onClick={() => onDelete(id, size)} src={publicPath('/img/close.svg')} alt="close"/>
           </div>
         </div>
-        <p className="row">{size}</p>
+        <div className="row">
+          <p className="col-12">{size}</p>
+        </div>
         <div className="row">
           <div className="col-6 count__sidebar">
             <p>
-              <img alt="minus" onClick={() => onDecrease(id, size)} className="control__sidebar left" src={publicPath('/img/minus.svg')}/>
+              {DecreaseBtn}
               <span>{count} шт</span>
-              <img alt="plus" onClick={() => onIncrease(id, size, cartItems)} className="control__sidebar right" src={publicPath('/img/more.svg')}/>
+              {IncreaseBtn}
             </p>
           </div>
           <div className="col-6">

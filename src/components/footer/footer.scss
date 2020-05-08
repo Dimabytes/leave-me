@@ -25,6 +25,17 @@ footer {
     font-family: "Dhurjati", sans-serif;
     color: white;
   }
+  .img__footer{
+    height: 1.75rem;
+  }
+
+a.link__footer:hover{
+  color: #e67780;
+}
+
+a.link__footer:hover *{
+  fill: #e67780;
+}
 
 .link__insta{
   img{

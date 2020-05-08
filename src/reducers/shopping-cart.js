@@ -38,12 +38,13 @@ const updateCartItem = (product, item = {}, quantity) => {
   }
 }
 
-const updateOrder = (state, productId, productSize, quantity) => {
-  let product, itemIndex, item
+const updateOrder = (state, productId, productSize, quantity, product) => {
+  let itemIndex, item
   const {shoppingCart: {cartItems}} = state
   itemIndex = cartItems.findIndex(({id, size}) => id === productId && size === productSize)
   item = cartItems[itemIndex]
-  product = item
+  if(!product)
+    product = item
   const newItem = updateCartItem(product, item, quantity)
   const newItems = updateCartItems(cartItems, newItem, itemIndex)
   return {
@@ -53,33 +54,19 @@ const updateOrder = (state, productId, productSize, quantity) => {
   }
 }
 
-
-const addFromPage = (state) => {
-  const {productPage: {product}, shoppingCart: {cartItems}} = state
-  const itemIndex = cartItems.findIndex(({id, size}) => id === product.id && size === product.currentSize)
-  const item = cartItems[itemIndex]
-  const newItem = updateCartItem(product, item, 1)
-  const newItems = updateCartItems(cartItems, newItem, itemIndex)
-  return {
-    ...state.shoppingCart,
-    orderTotal: newItems.reduce((a, b) => a + (b['total'] || 0), 0),
-    cartItems: newItems
-  }
-}
-
-
-
 const updateShoppingCart = (state, action) => {
   if(state === undefined){
     return {
       cartItems: [],
       orderTotal: 0,
       cartOpen: false,
+      checkRequested: false,
     }
   }
   switch (action.type) {
-    case "PRODUCT_ADDED_TO_CART":
-      return addFromPage(state)
+    case "PRODUCT_ADDED_FROM_PAGE":
+      const product = state.productPage.product
+      return updateOrder(state, product.id, product.currentSize, 1, product)
     case "PRODUCT_INCREASE_IN_CART":
       return updateOrder(state, action.payload.productId, action.payload.productSize, 1)
     case "PRODUCT_DECREASE_IN_CART":
@@ -87,11 +74,22 @@ const updateShoppingCart = (state, action) => {
     case "ALL_PRODUCTS_REMOVED_FROM_CART":
       const item = state.shoppingCart.cartItems.find(({id, size}) => id === action.payload.productId && size === action.payload.productSize)
       return updateOrder(state, action.payload.productId, action.payload.productSize, -item.count)
+
+    case "CART_CHECK_REQUEST":
+      return {
+        ...state.shoppingCart,
+        checkRequested: true,
+      }
+    case "CART_CHECK_SUCCESS":
+      return {
+        ...state.shoppingCart,
+        checkRequested: false,
+      }
     case "CLOSE_CART_SIDEBAR":
-        return {
-          ...state.shoppingCart,
-          cartOpen: false,
-        }
+      return {
+        ...state.shoppingCart,
+        cartOpen: false,
+      }
     case "OPEN_CART_SIDEBAR":
       return {
         ...state.shoppingCart,

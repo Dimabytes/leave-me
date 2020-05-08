@@ -1,6 +1,6 @@
-const productAddedToCart = () => {
+const productAddedFromPage = () => {
   return {
-    type: "PRODUCT_ADDED_TO_CART",
+    type: "PRODUCT_ADDED_FROM_PAGE",
   }
 }
 
@@ -43,15 +43,37 @@ const openCartSidebar = () => {
   }
 }
 
-const checkAddToCart = (shopService) => (id, size, cartItems) => (dispatch) => {
+const checkRequested = () => {
+  return {
+    type: 'CART_CHECK_REQUEST',
+  };
+};
+
+const checkSuccess = () => {
+  return {
+    type: 'CART_CHECK_SUCCESS',
+  };
+};
+
+const checkAddToCart = (shopService) => (id, size, cartItems, product) => (dispatch) => {
+  dispatch(checkRequested())
   const productInCart = cartItems.find(e => e.id === id)
   const quantity = productInCart ? productInCart.count : 1;
   shopService.checkProductQuantity(id, quantity, size)
     .then(res => {
+      dispatch(checkSuccess())
       if(res.allow){
-        dispatch(productIncreaseInCart(id, size))
+        if(product){
+          dispatch(productAddedFromPage())
+          dispatch(openCartSidebar())
+        } else
+          dispatch(productIncreaseInCart(id, size))
+
+
       }
-    })
+    }).catch(() => {
+    dispatch(checkSuccess())
+  })
 }
-export {productAddedToCart, productDecreaseInCart, clearCart,
+export {productDecreaseInCart, clearCart,
   productIncreaseInCart, allProductsRemovedFromCart, openCartSidebar, closeCartSidebar, checkAddToCart}

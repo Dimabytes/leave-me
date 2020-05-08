@@ -3,8 +3,7 @@ import ErrorIndicator from "../../../error-indicator";
 import Spinner from "../../../spinner";
 import {
   fetchProduct,
-  productChangedSize,
-  checkSingleProduct
+  productChangedSize, checkAddToCart
 } from "../../../../actions";
 import {bindActionCreators, compose} from "redux";
 import withShopService from "../../../hoc";
@@ -19,7 +18,9 @@ class SingleProductContainer extends Component{
   }
 
   render() {
-    const {product, loading, error, onAddedToCart, onRemovedToFromCart, onChangeSize, cartItems} = this.props
+    const {
+      product, loading, error, onAddedToCart,
+      onRemovedToFromCart, onChangeSize, cartItems, checkRequested} = this.props
     if(error){
       if(error.message){
         if(error.message.indexOf('404') !== -1)
@@ -36,23 +37,29 @@ class SingleProductContainer extends Component{
         </SimplePage>
       )
     }
-    if(product)
-      return <SingleProduct product={product}
-                            cartItems={cartItems}
-                            onAddedToCart={onAddedToCart}
-                            onRemovedToFromCart={onRemovedToFromCart}
-                            onChangeSize={onChangeSize}/>
+    const addToCartBtn = (
+      <div className={`btn btn-primary btn-product ${checkRequested ? 'disabled': ''}`} onClick={() => {
+        if(!checkRequested){
+          onAddedToCart(product.id, product.currentSize, cartItems, true);
+        }
+      }}>В корзину</div>
+    )
+    return <SingleProduct product={product}
+                          cartItems={cartItems}
+                          addToCartBtn={addToCartBtn}
+                          onRemovedToFromCart={onRemovedToFromCart}
+                          onChangeSize={onChangeSize}/>
   }
 }
 
-const mapStateToProps = ({productPage:{product, loading, error}, shoppingCart: {cartItems}}) => {
-  return {product, loading, error, cartItems}
+const mapStateToProps = ({productPage:{product, loading, error}, shoppingCart: {cartItems, checkRequested}}) => {
+  return {product, loading, error, cartItems, checkRequested}
 }
 
 const mapDispatchToProps = (dispatch, {shopService}) => {
   return bindActionCreators({
     fetchProduct: fetchProduct(shopService),
-    onAddedToCart: checkSingleProduct(shopService),
+    onAddedToCart: checkAddToCart(shopService),
     onChangeSize: productChangedSize
   }, dispatch);
 }

@@ -20,87 +20,9 @@
   cursor: pointer;
 }
 
-.cart__sidebar {
-  z-index: 1000;
-  position: fixed;
-  height: 100%;
-  width: 25rem;
-  right: -25rem;
-  top: 0;
-  color: white;
-  font-size: 1rem;
-  background: #e67780;
-  transition-duration: 1s;
-  max-height: 100%;
-  overflow: auto;
-}
-.sidebar__header{
-  margin-top: 1.5rem;
-  p{
-    margin-bottom: 0;
-    letter-spacing: 0.1rem;
-    font-family: "Codec Pro", sans-serif;
-  }
-}
-.body__sidebar{
-  margin-top: 3rem;
-}
-.cart__row{
-  padding: 0.75rem 0;
-  border-bottom: 1px solid black;
-  p, a{
-    margin-bottom: 0;
-    color: white;
-  }
-}
-.cart__row:last-child{
-  border-bottom: unset;
-}
-.cart__product-name{
-  text-transform: uppercase;
-}
-.footer__sidebar{
-  margin-top: 2rem;
-}
-.close__sidebar{
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 1rem;
-  cursor: pointer;
-}
-.close__product{
-  width: 0.75rem;
-  cursor: pointer;
-  max-width: unset;
-}
-.cart__sidebar.active{
-  right: 0;
-}
-.control__sidebar{
-  max-width: unset;
-  width: 1rem;
-  position: absolute;
-  top: calc(50% - 0.5rem);
-  cursor: pointer;
-}
-.control__sidebar.left{
-  left: -1.5rem;
-}
 
-.control__sidebar.right{
-  right: -1.5rem;
-}
 
-.count__sidebar{
-  p{
-    position: relative;
-    left: 1.5rem;
-    width: fit-content;
-  }
-}
-
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(sm) {
   .main-nav {
     margin: 0;
     > div {
@@ -117,10 +39,5 @@
   .main-nav__cart-icon {
     height: 2.5rem;
     padding-right: 1.5rem;
-  }
-  .cart__sidebar {
-    font-size: 1rem;
-    width: 100vw;
-    right: -100vw;
   }
 }

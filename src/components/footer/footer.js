@@ -1,6 +1,7 @@
 import React from "react";
-import publicPath from "../../utils/public-image";
 import {Link} from "react-router-dom";
+import {ReactComponent as VkSvg} from './img/vk.svg'
+import {ReactComponent as InstSvg} from './img/instagram.svg'
 import './footer.scss'
 
 const Footer = () => {
@@ -14,8 +15,8 @@ const Footer = () => {
           <p className="text__footer">Follow us</p>
         </div>
         <div className="p-2 links__footer d-flex justify-content-start w-7r">
-          <Link to="#" className="link__vk"><img className="img__footer" alt="vk" src={publicPath('/img/vk.svg')}/></Link>
-          <Link to="#" className="link__insta"><img alt="instagram" src={publicPath("/img/instagram.svg")}/></Link>
+          <Link to="#" className="link__footer link__vk"><VkSvg className="img__footer"/></Link>
+          <Link to="#" className="link__footer link__insta"><InstSvg className="img__footer"/></Link>
         </div>
       </div>
       <div className="d-flex flex-row justify-content-center">

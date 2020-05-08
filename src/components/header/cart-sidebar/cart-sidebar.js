@@ -3,6 +3,7 @@ import CartSidebarItem from "../cart-sidebar-item";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import publicPath from "../../../utils/public-image";
+import './cart-sidebar.scss'
 import {
   productDecreaseInCart,
   allProductsRemovedFromCart,
@@ -14,7 +15,8 @@ import withShopService from "../../hoc";
 class CartSidebar extends Component {
 
   render() {
-    const {orderTotal, cartItems, visible, closeCartSidebar, onIncrease, onDecrease, onDelete} = this.props
+    const {orderTotal, cartItems, visible, closeCartSidebar,
+      onIncrease, onDecrease, onDelete, checkRequested} = this.props
     const modificator = visible ? "active":"";
     if(orderTotal === 0 ) {
       return (
@@ -43,10 +45,11 @@ class CartSidebar extends Component {
           <div className="body__sidebar col-12">
             {
               cartItems.map((product, idx) => <CartSidebarItem key={idx}
-                                                          product={product}
-                                                          onIncrease={onIncrease}
-                                                          onDecrease={ onDecrease}
-                                                          onDelete={onDelete}
+                                                               product={product}
+                                                               onIncrease={onIncrease}
+                                                               onDecrease={ onDecrease}
+                                                               onDelete={onDelete}
+                                                               checkRequested={checkRequested}
                                                                cartItems={cartItems}/>)
             }
 
@@ -74,8 +77,8 @@ class CartSidebar extends Component {
   }
 }
 
-const mapStateToProps = ({shoppingCart: {orderTotal, cartItems, cartOpen: visible}}) => {
-  return {orderTotal, cartItems, visible}
+const mapStateToProps = ({shoppingCart: {orderTotal, cartItems, cartOpen: visible, checkRequested}}) => {
+  return {orderTotal, cartItems, visible, checkRequested}
 }
 
 

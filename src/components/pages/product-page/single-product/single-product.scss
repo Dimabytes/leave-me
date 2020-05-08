@@ -58,6 +58,9 @@
 .images__product {
   padding-top: 2rem;
 }
+.images__product:hover {
+  cursor: pointer;
+}
 .singe-product__slider-image{
   height: 33rem;
   object-fit: contain;

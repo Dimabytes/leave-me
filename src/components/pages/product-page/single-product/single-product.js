@@ -1,26 +1,25 @@
 import React from "react";
 import Slider from "react-slick";
 import '../../../app/style/slick.css'
-import {ReactComponent as NextSvg} from './img/next.svg'
-import {ReactComponent as PrevSvg} from './img/prev.svg'
 import './single-product.scss'
+import publicPath from "../../../../utils/public-image";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <NextSvg onClick={onClick} className={'nav__slider slider__nav-left'}/>
+    <img alt="next arrow" src={publicPath('/img/next.svg')}  onClick={onClick} className={'nav__slider slider__nav-left'}/>
   );
 }
 
 function SamplePrevArrow(props) {
   const {onClick } = props;
   return (
-    <PrevSvg alt={'next'} onClick={onClick} className={'nav__slider slider__nav-right'}/>
+    <img alt="prev arrow" src={publicPath('/img/prev.svg')} onClick={onClick} className={'nav__slider slider__nav-right'}/>
   );
 }
 
-const SingleProduct =  ({product, product: {cost, title, images, sizes, description, structure, sizes_image},
-                          onAddedToCart, onChangeSize, cartItems}) => {
+const SingleProduct =  ({product: {cost, title, images, sizes, description, structure, sizes_image},
+                          addToCartBtn, onChangeSize}) => {
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -59,9 +58,7 @@ const SingleProduct =  ({product, product: {cost, title, images, sizes, descript
           </div>
         </div>
         <div className="col6">
-          <div className="btn btn-primary btn-product" onClick={() => {
-            onAddedToCart(cartItems, product);
-          }}>В корзину</div>
+          {addToCartBtn}
         </div>
       </div>
       <p className="row text__product">{description}</p>
