@@ -36,11 +36,13 @@ class CheckoutPage extends Component {
             this.setState({formProcessing: false})
             this.props.history.push("/success_order");
           } else {
+            clearCart();
             this.setState({formProcessing: false})
             this.props.history.push("/fail-order");
           }
         })
         .catch(() => {
+          clearCart();
           this.setState({formProcessing: false})
           this.props.history.push("/fail-order");
         })
