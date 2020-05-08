@@ -15,6 +15,8 @@
   transition: .5s ease-in-out;
   max-height: 100%;
   overflow: auto;
+  border: 2px solid black;
+  border-right: unset;
 }
 .sidebar__header{
   margin-top: 1.5rem;

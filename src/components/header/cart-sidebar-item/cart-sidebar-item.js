@@ -32,15 +32,13 @@ const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems, 
       <div className="col-8 align-content-between d-flex justify-content-around flex-column">
         <div className="row">
           <div className="col-10">
-            <Link to={`/product/${id}`}>{title}</Link>
+            <Link to={`/product/${id}`}>{title} - {size}</Link>
           </div>
           <div className="col-1">
             <img className="close__product" onClick={() => onDelete(id, size)} src={publicPath('/img/close.svg')} alt="close"/>
           </div>
         </div>
-        <div className="row">
-          <p className="col-12">{size}</p>
-        </div>
+
         <div className="row">
           <div className="col-6 count__sidebar">
             <p>
@@ -50,7 +48,7 @@ const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems, 
             </p>
           </div>
           <div className="col-6">
-            <p className="float-right">{total}</p>
+            <p className="float-right">{total} RUB</p>
           </div>
         </div>
       </div>
