@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/leave-me/static/css/main.cc31dd3e.chunk.css",
-    "main.js": "/leave-me/static/js/main.94ae518a.chunk.js",
-    "main.js.map": "/leave-me/static/js/main.94ae518a.chunk.js.map",
+    "main.css": "/leave-me/static/css/main.d520ce20.chunk.css",
+    "main.js": "/leave-me/static/js/main.ce7cd84e.chunk.js",
+    "main.js.map": "/leave-me/static/js/main.ce7cd84e.chunk.js.map",
     "runtime-main.js": "/leave-me/static/js/runtime-main.924fcf86.js",
     "runtime-main.js.map": "/leave-me/static/js/runtime-main.924fcf86.js.map",
     "static/css/2.69121389.chunk.css": "/leave-me/static/css/2.69121389.chunk.css",
-    "static/js/2.b84731a1.chunk.js": "/leave-me/static/js/2.b84731a1.chunk.js",
-    "static/js/2.b84731a1.chunk.js.map": "/leave-me/static/js/2.b84731a1.chunk.js.map",
+    "static/js/2.3ce12fc7.chunk.js": "/leave-me/static/js/2.3ce12fc7.chunk.js",
+    "static/js/2.3ce12fc7.chunk.js.map": "/leave-me/static/js/2.3ce12fc7.chunk.js.map",
     "index.html": "/leave-me/index.html",
-    "precache-manifest.6f244f969b63afdd1beb7c5ac2037ff3.js": "/leave-me/precache-manifest.6f244f969b63afdd1beb7c5ac2037ff3.js",
+    "precache-manifest.064d8548725790406e6258ad28b0f88d.js": "/leave-me/precache-manifest.064d8548725790406e6258ad28b0f88d.js",
     "service-worker.js": "/leave-me/service-worker.js",
     "static/css/2.69121389.chunk.css.map": "/leave-me/static/css/2.69121389.chunk.css.map",
-    "static/css/main.cc31dd3e.chunk.css.map": "/leave-me/static/css/main.cc31dd3e.chunk.css.map",
-    "static/js/2.b84731a1.chunk.js.LICENSE.txt": "/leave-me/static/js/2.b84731a1.chunk.js.LICENSE.txt",
+    "static/css/main.d520ce20.chunk.css.map": "/leave-me/static/css/main.d520ce20.chunk.css.map",
+    "static/js/2.3ce12fc7.chunk.js.LICENSE.txt": "/leave-me/static/js/2.3ce12fc7.chunk.js.LICENSE.txt",
     "static/media/app.scss": "/leave-me/static/media/bg.20db8722.jpg",
-    "static/media/next.0a06d5c5.svg": "/leave-me/static/media/next.0a06d5c5.svg",
-    "static/media/prev.f668368d.svg": "/leave-me/static/media/prev.f668368d.svg"
+    "static/media/instagram.17ad7928.svg": "/leave-me/static/media/instagram.17ad7928.svg",
+    "static/media/vk.36fbd766.svg": "/leave-me/static/media/vk.36fbd766.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.924fcf86.js",
     "static/css/2.69121389.chunk.css",
-    "static/js/2.b84731a1.chunk.js",
-    "static/css/main.cc31dd3e.chunk.css",
-    "static/js/main.94ae518a.chunk.js"
+    "static/js/2.3ce12fc7.chunk.js",
+    "static/css/main.d520ce20.chunk.css",
+    "static/js/main.ce7cd84e.chunk.js"
   ]
 }
