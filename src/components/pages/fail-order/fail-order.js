@@ -7,11 +7,11 @@ const FailOrder = () => {
 
   setTimeout(() => {
     history.push("/");
-  }, 3000)
+  }, 5000)
   return (
     <SimplePage pageClass="fail-order" containerClasses="bg-danger">
-        Упс! Что то пошло не так :( <br/>
-        Вы будете перенаправлены на главную страницу через 3 секунды...
+        К сожалению, товара больше нет в наличии :(<br/>
+        Вы будете перенаправлены на главную страницу через 5 секунд...
     </SimplePage>
   )
 }
