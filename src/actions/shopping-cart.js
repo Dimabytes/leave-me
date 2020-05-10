@@ -58,8 +58,8 @@ const checkSuccess = () => {
 const checkAddToCart = (shopService) => (id, size, cartItems, product) => (dispatch) => {
   dispatch(checkRequested())
   const productInCart = cartItems.find(e => e.id === id && e.size === size)
-  const quantity = productInCart ? productInCart.count : 1;
-  shopService.checkProductQuantity(id, quantity, size)
+  const quantity = productInCart ? productInCart.count : 0;
+  shopService.checkProductQuantity(id, quantity + 1, size)
     .then(res => {
       dispatch(checkSuccess())
       console.log(res)
