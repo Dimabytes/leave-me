@@ -67,11 +67,9 @@ const checkAddToCart = (shopService) => (id, size, cartItems, product) => (dispa
         if(product){
           dispatch(productAddedFromPage())
           dispatch(openCartSidebar())
-        } else{
+        } else {
           dispatch(productIncreaseInCart(id, size))
         }
-
-
       }
     }).catch(() => {
     dispatch(checkSuccess())
