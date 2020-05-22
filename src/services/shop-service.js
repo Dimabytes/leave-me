@@ -28,7 +28,7 @@ export default class ShopService {
       body: JSON.stringify(body),
       method: "POST",
     });
-}
+  }
 
   checkProductQuantity = async (id, quantity, size_id) => {
     return await this.getResource("/products/info/check_quantity/", {
