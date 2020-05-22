@@ -1,6 +1,6 @@
 {
   "name": "leave-me",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://leaveme.ru/",
   "private": true,
   "dependencies": {
