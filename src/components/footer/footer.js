@@ -15,8 +15,8 @@ const Footer = () => {
           <p className="text__footer">Follow us</p>
         </div>
         <div className="p-2 links__footer d-flex justify-content-start w-7r">
-          <Link to="#" className="link__footer link__vk"><VkSvg className="img__footer"/></Link>
-          <Link to="#" className="link__footer link__insta"><InstSvg className="img__footer"/></Link>
+          <a href="https://vk.com/leavemeclub/" className="link__footer link__vk"><VkSvg className="img__footer"/></a>
+          <a href="https://www.instagram.com/leavemeclub/" className="link__footer link__insta"><InstSvg className="img__footer"/></a>
         </div>
       </div>
       <div className="d-flex flex-row justify-content-center">
