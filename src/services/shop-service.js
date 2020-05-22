@@ -1,6 +1,6 @@
 export default class ShopService {
 
-  _apiBase = 'https://majeste.pythonanywhere.com/api/v1';
+  _apiBase = 'http://127.0.0.1:8000/api/v1';
 
   getResource = async (url, opts) => {
     const res = await fetch(`${this._apiBase}${url}`, opts);
@@ -32,7 +32,7 @@ export default class ShopService {
 
   checkProductQuantity = async (id, quantity, size_id) => {
     console.log(quantity)
-    return await this.getResource("/products/check_quantity/", {
+    return await this.getResource("/products/info/check_quantity/", {
       "headers": {
         "accept": "application/json",
         "content-type": "application/json",
