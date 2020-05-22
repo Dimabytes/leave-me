@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Slider from "react-slick";
 import '../../../app/style/slick.css'
 import './single-product.scss'
@@ -27,6 +27,21 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
     nextArrow: <SampleNextArrow/>,
     prevArrow: <SamplePrevArrow/>
   };
+
+  function SizesTable (props){
+    if(sizes_image){
+      return (
+        <Fragment>
+          <div className="mb-3"/>
+          <div className="row">
+            <a className="link__product" href={sizes_image}>Таблица размеров</a>
+          </div>
+        </Fragment>
+      );
+    }
+    return null;
+  }
+
   return (
     <div className="row singe-product">
     <div className="col-lg-7 col-md-7 col-12 images__product">
@@ -40,10 +55,11 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
         }
       </Slider>
     </div>
-    <div className="offset-md-1 col-md-4 col-12 rounded info__product">
+    <div className="offset-md-1 col-md-4 col-12 mt-5 rounded info__product">
       <div className="row">
         <h1 className="header__product">{title}</h1>
       </div>
+
       <div className="row">
         <h3 className="cost__product">{cost} RUB</h3>
       </div>
@@ -52,7 +68,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
           <div className="form-group">
             <select onChange={(event) => onChangeSize(event.target.value)} className="form-control select__product">
               {
-                sizes.map((size, idx) => <option key={idx}>{size}</option>)
+                sizes.map((size, idx) => <option value={size.id} key={idx}>{size.size} {size.isLast ? "(1 шт.)" : ''}</option>)
               }
             </select>
           </div>
@@ -63,10 +79,8 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
       </div>
       <p className="row text__product">{description}</p>
       <p className="row text__product">{structure}</p>
-      <div className="mb-3"/>
-      <div className="row">
-        <a className="link__product" href={sizes_image}>Таблица размеров</a>
-      </div>
+      <SizesTable/>
+
     </div>
   </div>)
 }

@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="container-fluid">
       <div className="d-flex flex-row justify-content-center align-items-baseline">
         <div className="p-2 d-flex justify-content-end w-7r">
-          <Link className="link__footer" to="#">Policy</Link>
+          <Link className="link__footer" to="/policy">Policy</Link>
         </div>
         <div className="p-2 d-flex justify-content-center w-7r">
           <p className="text__footer">Follow us</p>

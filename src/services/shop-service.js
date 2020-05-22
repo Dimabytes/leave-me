@@ -1,6 +1,6 @@
 export default class ShopService {
 
-  _apiBase = 'https://majeste.pythonanywhere.com//api/v1';
+  _apiBase = 'https://majeste.pythonanywhere.com/api/v1';
 
   getResource = async (url, opts) => {
     const res = await fetch(`${this._apiBase}${url}`, opts);
@@ -15,8 +15,8 @@ export default class ShopService {
     return await this.getResource(`/products/`)
   };
 
-  getProduct = async (id) => {
-    return await this.getResource(`/products/${id}/`)
+  getProduct = async (slug) => {
+    return await this.getResource(`/products/${slug}/`)
   };
 
   addOrder = async (body) => {
@@ -30,13 +30,14 @@ export default class ShopService {
     });
 }
 
-  checkProductQuantity = async (id, quantity, size) => {
+  checkProductQuantity = async (id, quantity, size_id) => {
+    console.log(quantity)
     return await this.getResource("/products/check_quantity/", {
       "headers": {
         "accept": "application/json",
         "content-type": "application/json",
       },
-      body: JSON.stringify({id, quantity, size}),
+      body: JSON.stringify({id, quantity, size: size_id}),
       method: "POST",
     });
   }

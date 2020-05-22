@@ -26,13 +26,13 @@ class ProductListItem extends Component{
       fade: true,
       cssEase: 'linear'
     };
-    const  {product, product: {id, images}} = this.props
+    const  {product, product: {slug, images}} = this.props
     if(product.sizes.length > 0){
       return (
-        <Link to={`/product/${id}`} className="col-lg-4 col-6 product-card">
+        <Link to={`/product/${slug}`} className="col-lg-4 col-6 product-card">
           <Slider ref={c => (this.slider = c)} {...settings} className="card-title">
             {
-              images.map((image, idx) => <img
+              images.slice(0, 2).map((image, idx) => <img
                 onMouseOver={this.next}
                 onMouseOut={this.prev}
                 key={idx}

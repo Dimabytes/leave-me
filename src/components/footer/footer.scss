@@ -26,8 +26,19 @@ footer {
     color: white;
   }
   .img__footer{
-    height: 1.75rem;
+    height: 1.5rem;
   }
+
+
+.links__footer a{
+  margin-left: -1.7rem;
+}
+
+.link__vk .img__footer{
+  height: 1.75rem;
+  position: relative;
+  top: -1px;
+}
 
 a.link__footer:hover{
   color: #e67780;
@@ -50,9 +61,4 @@ a.link__footer:hover *{
   }
 }
 
-  .links__footer{
-    a{
-      margin: 0 0.2rem;
-    }
-  }
 

@@ -14,7 +14,8 @@ import SimplePage from "../../simple-page";
 
 class SingleProductContainer extends Component{
   componentWillMount() {
-    this.props.fetchProduct(this.props.itemId)
+    console.log(this.props.itemSlug)
+    this.props.fetchProduct(this.props.itemSlug)
   }
 
   render() {

@@ -41,7 +41,7 @@ const updateCartItem = (product, item = {}, quantity) => {
 const updateOrder = (state, productId, productSize, quantity, product) => {
   let itemIndex, item
   const {shoppingCart: {cartItems}} = state
-  itemIndex = cartItems.findIndex(({id, size}) => id === productId && size === productSize)
+  itemIndex = cartItems.findIndex(({id, size}) => id === productId && size.id === productSize.id)
   item = cartItems[itemIndex]
   if(!product)
     product = item
@@ -72,7 +72,7 @@ const updateShoppingCart = (state, action) => {
     case "PRODUCT_DECREASE_IN_CART":
       return updateOrder(state, action.payload.productId, action.payload.productSize, -1)
     case "ALL_PRODUCTS_REMOVED_FROM_CART":
-      const item = state.shoppingCart.cartItems.find(({id, size}) => id === action.payload.productId && size === action.payload.productSize)
+      const item = state.shoppingCart.cartItems.find(({id, size}) => id === action.payload.productId && size.id === action.payload.productSize.id)
       return updateOrder(state, action.payload.productId, action.payload.productSize, -item.count)
 
     case "CART_CHECK_REQUEST":

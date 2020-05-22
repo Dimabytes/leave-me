@@ -32,7 +32,7 @@ const CartSidebarItem = ({product, onIncrease, onDecrease, onDelete, cartItems, 
       <div className="col-8 align-content-between d-flex justify-content-around flex-column">
         <div className="row">
           <div className="col-10">
-            <Link to={`/product/${id}`}>{title} - {size}</Link>
+            <Link to={`/product/${id}`}>{title} - {size.size}</Link>
           </div>
           <div className="col-1">
             <img className="close__product" onClick={() => onDelete(id, size)} src={publicPath('/img/close.svg')} alt="close"/>

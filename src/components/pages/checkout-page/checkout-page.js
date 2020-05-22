@@ -24,7 +24,7 @@ class CheckoutPage extends Component {
           cartItems.map(product => {
             return {
               count: product.count,
-              size: product.size,
+              size: product.size.id,
               product: product.id,
             }
           })

@@ -26,9 +26,9 @@ const productChangedSize = (productSize) => {
   }
 }
 
-const fetchProduct = (shopService) => (id) => (dispatch) =>{
+const fetchProduct = (shopService) => (slug) => (dispatch) =>{
   dispatch(productRequested());
-  shopService.getProduct(id)
+  shopService.getProduct(slug)
     .then(product => {
       if(!product.empty)
         product.currentSize = product.sizes[0]
