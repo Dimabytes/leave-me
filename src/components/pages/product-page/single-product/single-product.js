@@ -66,7 +66,8 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
       <div className="row controls__product">
         <div className="col6">
           <div className="form-group">
-            <select onChange={(event) => onChangeSize(event.target.value)} className="form-control select__product">
+            <select onChange={
+              (event) => onChangeSize(sizes.find(size => size.id == event.target.value))} className="form-control select__product">
               {
                 sizes.map((size, idx) => <option value={size.id} key={idx}>{size.size} {size.isLast ? "(1 шт.)" : ''}</option>)
               }

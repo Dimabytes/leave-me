@@ -31,7 +31,6 @@ export default class ShopService {
 }
 
   checkProductQuantity = async (id, quantity, size_id) => {
-    console.log(quantity)
     return await this.getResource("/products/info/check_quantity/", {
       "headers": {
         "accept": "application/json",
