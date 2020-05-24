@@ -26,13 +26,13 @@ class ProductListItem extends Component{
       fade: true,
       cssEase: 'linear'
     };
-    const  {product, product: {slug, images}} = this.props
+    const  {product, product: {slug, preview_images}} = this.props
     if(product.sizes.length > 0){
       return (
         <Link to={`/product/${slug}`} className="col-lg-4 col-6 product-card">
           <Slider ref={c => (this.slider = c)} {...settings} className="card-title">
             {
-              images.slice(0, 2).map((image, idx) => <img
+              preview_images.slice(0, 2).map((image, idx) => <img
                 onMouseOver={this.next}
                 onMouseOut={this.prev}
                 key={idx}
@@ -48,7 +48,7 @@ class ProductListItem extends Component{
       <div className="col-lg-4 col-6 product-card out-of-stock">
         <Slider ref={c => (this.slider = c)} {...settings}>
           {
-            images.map((image, idx) => <img
+            preview_images.slice(0, 2).map((image, idx) => <img
               onMouseOver={this.next}
               onMouseOut={this.prev}
               key={idx}
