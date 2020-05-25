@@ -5,8 +5,11 @@ export const loadState = () => {
       return undefined;
     }
     const state = JSON.parse(serializedState);
-    state.shoppingCart.cartOpen = state.shoppingCart.checkRequested = false
-    return state;
+    if(state.version === process.env.REACT_APP_VERSION){
+      state.shoppingCart.cartOpen = state.shoppingCart.checkRequested = false
+      return state;
+    }
+    return undefined;
   } catch (err) {
     return undefined;
   }
@@ -14,6 +17,7 @@ export const loadState = () => {
 
 export const saveState = (state) => {
   try {
+    state.version = process.env.REACT_APP_VERSION
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (err) {
