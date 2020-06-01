@@ -13,8 +13,9 @@ import NoMatch from "../../no-match";
 import SimplePage from "../../simple-page";
 
 class SingleProductContainer extends Component{
-  componentWillMount() {
-    this.props.fetchProduct(this.props.itemSlug)
+  constructor(props) {
+    super(props);
+    props.fetchProduct(props.itemSlug);
   }
 
   render() {

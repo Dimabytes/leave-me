@@ -28,7 +28,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
     prevArrow: <SamplePrevArrow/>
   };
 
-  function SizesTable (props){
+  function SizesTable (){
     if(sizes_image){
       return (
         <Fragment>
@@ -45,7 +45,6 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
   return (
     <div className="row singe-product">
     <div className="col-lg-7 col-md-7 col-12 images__product">
-      <Zoom>
       <Slider {...settings} className="card-title">
         {
           images.map((image, idx) => <img
@@ -55,7 +54,6 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
             src={image}/>)
         }
       </Slider>
-      </Zoom>
     </div>
     <div className="offset-md-1 col-md-4 col-12 mt-5 rounded info__product">
       <div className="row">
