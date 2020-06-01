@@ -25,6 +25,7 @@
 @include media-breakpoint-down(sm) {
   .main-nav {
     margin: 0;
+    padding-top: 1.5rem;
     > div {
       padding: 0;
     }
@@ -32,8 +33,8 @@
   }
   .main-nav__logo {
     img {
-      width: 14rem;
-      left: calc(50% - 7rem);
+      width: 18rem;
+      left: calc(50% - 9rem);
     }
   }
   .main-nav__cart-icon {

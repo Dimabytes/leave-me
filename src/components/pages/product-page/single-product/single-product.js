@@ -45,6 +45,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
   return (
     <div className="row singe-product">
     <div className="col-lg-7 col-md-7 col-12 images__product">
+      <Zoom>
       <Slider {...settings} className="card-title">
         {
           images.map((image, idx) => <img
@@ -54,6 +55,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
             src={image}/>)
         }
       </Slider>
+      </Zoom>
     </div>
     <div className="offset-md-1 col-md-4 col-12 mt-5 rounded info__product">
       <div className="row">
@@ -67,7 +69,7 @@ const SingleProduct =  ({product: {cost, title, images, sizes, description, stru
         <div className="col6">
           <div className="form-group">
             <select onChange={
-              (event) => onChangeSize(sizes.find(size => size.id == event.target.value))} className="form-control select__product">
+              (event) => onChangeSize(sizes.find(size => size.id === Number.parseInt(event.target.value)))} className="form-control select__product">
               {
                 sizes.map((size, idx) => <option value={size.id} key={idx}>{size.size} {size.isLast ? "(1 шт.)" : ''}</option>)
               }
