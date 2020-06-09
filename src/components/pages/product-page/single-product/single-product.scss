@@ -57,26 +57,7 @@
 }
 .images__product {
   padding-top: 2rem;
-
-
 }
-.product__slider-wrapper{
-  width: 30rem;
-  div{
-    background-size: contain!important;
-  }
-  .slick-slider{
-    width: 30rem;
-  }
-  .slick-list{
-    max-height: 400px;
-  }
-  .slick-slide div{
-    width: 30rem!important;
-    height: 30rem!important;
-  }
-}
-
 .images__product:hover {
   cursor: pointer;
 }
@@ -100,10 +81,10 @@
 }
 
 .slider__nav-left{
-  right: -3rem;
+  right: 0;
 }
 .slider__nav-right{
-  left: -3rem;
+  left: 0;
 }
 .controls__product{
   justify-content: space-between;
